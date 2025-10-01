@@ -172,11 +172,13 @@ export function HubSpotContactSection({
         src="https://js.hsforms.net/forms/embed/v2.js"
         strategy="afterInteractive"
         onLoad={() => {
-          console.log("HubSpot script loaded");
+          console.log("✅ HubSpot script loaded successfully");
+          console.log("Environment:", process.env.NODE_ENV);
           setIsScriptLoaded(true);
         }}
         onError={(e) => {
-          console.error("Failed to load HubSpot script:", e);
+          console.error("❌ Failed to load HubSpot script:", e);
+          console.error("This could be due to ad blockers or network restrictions");
         }}
       />
 
@@ -216,7 +218,7 @@ export function HubSpotContactSection({
                         {t('contact.button')}
                       </Button>
                     </DialogTrigger>
-                  <DialogContent className="max-w-[95vw] w-[95vw] lg:max-w-[1200px] lg:w-[1200px] max-h-[90vh] overflow-y-auto p-0 gap-0 bg-white">
+                  <DialogContent className="w-screen h-screen max-w-none max-h-none lg:max-w-[1200px] lg:w-[1200px] lg:h-auto lg:max-h-[90vh] overflow-y-auto p-0 gap-0 bg-white">
                     <DialogTitle className="sr-only">Formulário de Contato</DialogTitle>
                     <DialogDescription className="sr-only">
                       Preencha o formulário para entrar em contato conosco
