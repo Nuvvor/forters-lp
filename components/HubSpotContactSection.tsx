@@ -218,7 +218,7 @@ export function HubSpotContactSection({
                         {t('contact.button')}
                       </Button>
                     </DialogTrigger>
-                  <DialogContent className="w-screen h-screen max-w-none max-h-none lg:max-w-[1200px] lg:w-[1200px] lg:h-auto lg:max-h-[90vh] overflow-y-auto p-0 gap-0 bg-white">
+                  <DialogContent className="fixed inset-0 w-screen h-screen max-w-none max-h-none !translate-x-0 !translate-y-0 top-0 left-0 rounded-none border-none lg:static lg:inset-auto lg:max-w-[1200px] lg:w-[1200px] lg:h-auto lg:max-h-[90vh] lg:!translate-x-[-50%] lg:!translate-y-[-50%] lg:top-[50%] lg:left-[50%] lg:rounded-lg lg:border overflow-y-auto p-0 gap-0 bg-white">
                     <DialogTitle className="sr-only">Formulário de Contato</DialogTitle>
                     <DialogDescription className="sr-only">
                       Preencha o formulário para entrar em contato conosco

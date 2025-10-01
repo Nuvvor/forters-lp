@@ -162,17 +162,21 @@ export default function Home() {
 
               {/* Stats */}
               <div className={`grid grid-cols-3 gap-8 pt-8 transition-all duration-1000 delay-400 ${isHeroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-                <div>
-                  <div className="text-4xl font-bold text-primary">{t('hero.stats.companiesValue')}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{t('hero.stats.companies')}</div>
+                <div className="flex flex-col justify-end h-24">
+                  <div className="text-4xl font-bold text-primary leading-none">
+                    <span className="text-xl font-normal">+US$ </span>
+                    <span>500</span>
+                    <span className="text-xl font-normal">M</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.companies')}</div>
                 </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary">{t('hero.stats.countriesValue')}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{t('hero.stats.countries')}</div>
+                <div className="flex flex-col justify-end h-24">
+                  <div className="text-4xl font-bold text-primary leading-none">{t('hero.stats.countriesValue')}</div>
+                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.countries')}</div>
                 </div>
-                <div>
-                  <div className="text-4xl font-bold text-primary">{t('hero.stats.insurersValue')}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{t('hero.stats.insurers')}</div>
+                <div className="flex flex-col justify-end h-24">
+                  <div className="text-4xl font-bold text-primary leading-none">{t('hero.stats.insurersValue')}</div>
+                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.insurers')}</div>
                 </div>
               </div>
             </div>
