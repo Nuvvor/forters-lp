@@ -1,0 +1,129 @@
+{
+  "nav": {
+    "produtos": "Productos",
+    "servicos": "Servicios",
+    "presencaGlobal": "Presencia Global",
+    "seguradoras": "Aseguradoras",
+    "contato": "Contacto",
+    "faleConosco": "Contáctenos"
+  },
+  "hero": {
+    "title": "Protección Global para su Empresa",
+    "subtitle": "Soluciones especializadas en seguros corporativos con presencia internacional. Expertos en la protección de empresas latinoamericanas.",
+    "ctaPrimary": "Solicitar Cotización",
+    "ctaSecondary": "Nuestros Servicios",
+    "stats": {
+      "companies": "Empresas Satisfechas",
+      "companiesValue": "+500",
+      "countries": "Presentes en 5 países",
+      "countriesValue": "+5",
+      "insurers": "Aseguradoras Asociadas",
+      "insurersValue": "+40"
+    },
+    "badges": {
+      "business": "Riesgos Empresariales",
+      "coverage": "Cobertura Global",
+      "consulting": "Consultoría Especializada"
+    }
+  },
+  "features": {
+    "sectionTitle": "SERVICIOS",
+    "items": {
+      "financial": {
+        "title": "Especialistas en Líneas Financieras",
+        "description": "Soluciones especializadas para proteger sus activos financieros"
+      },
+      "international": {
+        "title": "Presencia Internacional",
+        "description": "Protección global para sus negocios en expansión"
+      },
+      "technology": {
+        "title": "Tecnología Avanzada",
+        "description": "Plataformas digitales para gestionar sus seguros con facilidad"
+      },
+      "team": {
+        "title": "Equipo Dedicado",
+        "description": "Profesionales experimentados para atender sus necesidades"
+      }
+    }
+  },
+  "products": {
+    "sectionTitle": "PRODUCTOS",
+    "items": {
+      "do": {
+        "title": "D&O",
+        "subtitle": "Directors & Officers",
+        "description": "Seguro de Responsabilidad Civil para Directores y Administradores",
+        "details": "Protección para ejecutivos contra reclamaciones relacionadas con sus decisiones gerenciales y administrativas."
+      },
+      "eo": {
+        "title": "E&O",
+        "subtitle": "Errors & Omissions",
+        "description": "Seguro de Responsabilidad Civil Profesional",
+        "details": "Cobertura para profesionales contra reclamaciones de errores, omisiones o negligencia en el ejercicio de sus actividades."
+      },
+      "rcg": {
+        "title": "RCG",
+        "subtitle": "Responsabilidad Civil General",
+        "description": "Seguro de Responsabilidad Civil General",
+        "details": "Protección contra daños corporales, materiales y morales causados a terceros durante las operaciones de la empresa."
+      },
+      "cyber": {
+        "title": "Cyber",
+        "subtitle": "Seguro Cyber",
+        "description": "Protección contra Riesgos Cibernéticos",
+        "details": "Cobertura para ataques cibernéticos, fuga de datos, ransomware y otras amenazas digitales."
+      },
+      "garantia": {
+        "title": "Seguro de Garantía",
+        "subtitle": "Surety Bond",
+        "description": "Seguro de Garantía para Contratos",
+        "details": "Garantía para licitaciones, contratos y obligaciones contractuales con organismos públicos y privados."
+      },
+      "outros": {
+        "title": "Otros Seguros",
+        "subtitle": "Other Insurance",
+        "description": "Soluciones Personalizadas",
+        "details": "Ofrecemos otras soluciones de seguros corporativos adaptadas a las necesidades específicas de su negocio."
+      }
+    }
+  },
+  "presencaGlobal": {
+    "sectionTitle": "PRESENCIA GLOBAL",
+    "title": "Presencia Global",
+    "subtitle": "Nuestra actuación en diversos países de las Américas, junto con una amplia red de aseguradoras asociadas, nos permite ofrecer la protección ideal para cada riesgo.",
+    "countries": {
+      "brasil": "Brasil",
+      "mexico": "México",
+      "colombia": "Colombia",
+      "usa": "Estados Unidos",
+      "argentina": "Argentina",
+      "outros": "Y otros"
+    }
+  },
+  "seguradoras": {
+    "sectionTitle": "ASEGURADORAS",
+    "title": "Aseguradoras de Excelencia",
+    "subtitle": "Conectados a las principales aseguradoras, trabajamos para ofrecer la protección adecuada para cada riesgo."
+  },
+  "contact": {
+    "sectionTitle": "CONTACTO",
+    "title": "Contacte con Forters",
+    "subtitle": "Complete el formulario y nuestro equipo se pondrá en contacto con usted",
+    "button": "Solicitar Contacto",
+    "direct": "O contáctenos directamente:",
+    "email": "contato@forters.com.br",
+    "phone": "+55 11 94051-6104"
+  },
+  "footer": {
+    "description": "Forters es líder en seguros corporativos y líneas financieras, ofreciendo soluciones especializadas para proteger empresas en un entorno cada vez más dinámico a través de nuestra presencia internacional.",
+    "links": {
+      "produtos": "Productos",
+      "servicos": "Servicios",
+      "presencaGlobal": "Presencia Global",
+      "parceiros": "Socios",
+      "contato": "Contacto"
+    },
+    "copyright": "© 2025 Forters. Todos los derechos reservados."
+  }
+}
