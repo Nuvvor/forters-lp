@@ -9,7 +9,9 @@ import Image from "next/image";
 import { ProductsCarousel } from "@/components/ProductsCarousel";
 import { SectionTitle } from "@/components/SectionTitle";
 import { PartnersSection } from "@/components/PartnersSection";
+import { ClientsSection } from "@/components/ClientsSection";
 import { HubSpotContactSection } from "@/components/HubSpotContactSection";
+import { CookieConsent } from "@/components/CookieConsent";
 import BR from 'country-flag-icons/react/3x2/BR';
 import MX from 'country-flag-icons/react/3x2/MX';
 import CO from 'country-flag-icons/react/3x2/CO';
@@ -115,6 +117,7 @@ export default function Home() {
               <a href="#produtos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.produtos')}</a>
               <a href="#servicos" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.servicos')}</a>
               <a href="#presenca" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.presencaGlobal')}</a>
+              <a href="#clientes" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.clientes')}</a>
               <a href="#parceiros" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.seguradoras')}</a>
               <a href="#contato" className="text-sm font-medium hover:text-primary transition-colors">{t('nav.contato')}</a>
             </div>
@@ -168,15 +171,15 @@ export default function Home() {
                     <span>500</span>
                     <span className="text-xl font-normal">M</span>
                   </div>
-                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.companies')}</div>
+                  <div className="text-sm text-muted-foreground mt-2 h-10 leading-5">{t('hero.stats.companies')}</div>
                 </div>
                 <div className="flex flex-col justify-end h-24">
                   <div className="text-4xl font-bold text-primary leading-none">{t('hero.stats.countriesValue')}</div>
-                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.countries')}</div>
+                  <div className="text-sm text-muted-foreground mt-2 h-10 leading-5">{t('hero.stats.countries')}</div>
                 </div>
                 <div className="flex flex-col justify-end h-24">
                   <div className="text-4xl font-bold text-primary leading-none">{t('hero.stats.insurersValue')}</div>
-                  <div className="text-sm text-muted-foreground mt-2">{t('hero.stats.insurers')}</div>
+                  <div className="text-sm text-muted-foreground mt-2 h-10 leading-5">{t('hero.stats.insurers')}</div>
                 </div>
               </div>
             </div>
@@ -276,6 +279,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Clients Section */}
+      <ClientsSection />
 
       {/* Global Presence Section */}
       <section id="presenca" className="py-20 bg-background">
@@ -378,6 +384,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* Cookie Consent Banner */}
+      <CookieConsent />
     </div>
   );
 }

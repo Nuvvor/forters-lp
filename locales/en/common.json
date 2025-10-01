@@ -3,6 +3,7 @@
     "produtos": "Products",
     "servicos": "Services",
     "presencaGlobal": "Global Presence",
+    "clientes": "Clients",
     "seguradoras": "Insurers",
     "contato": "Contact",
     "faleConosco": "Contact Us"
@@ -101,6 +102,12 @@
       "outros": "And others"
     }
   },
+  "clients": {
+    "sectionTitle": "CLIENTS",
+    "title": "Companies that trust",
+    "subtitle": "Proudly supporting companies that transform their industries, offering tailored protection for every challenge.",
+    "andManyOthers": "and many others"
+  },
   "seguradoras": {
     "sectionTitle": "INSURERS",
     "title": "Insurers of Excellence",
@@ -125,5 +132,10 @@
       "contato": "Contact"
     },
     "copyright": "© 2025 Forters. All rights reserved."
+  },
+  "cookies": {
+    "message": "This website uses cookies to enhance your browsing experience. By continuing to browse, you agree to our cookie policy.",
+    "accept": "Accept",
+    "decline": "Decline"
   }
 }

@@ -3,6 +3,7 @@
     "produtos": "Productos",
     "servicos": "Servicios",
     "presencaGlobal": "Presencia Global",
+    "clientes": "Clientes",
     "seguradoras": "Aseguradoras",
     "contato": "Contacto",
     "faleConosco": "Contáctenos"
@@ -101,6 +102,12 @@
       "outros": "Y otros"
     }
   },
+  "clients": {
+    "sectionTitle": "CLIENTES",
+    "title": "Empresas que Confían",
+    "subtitle": "Orgullosamente apoyamos empresas que transforman sus industrias, ofreciendo protección a medida para cada desafío.",
+    "andManyOthers": "y muchos otros"
+  },
   "seguradoras": {
     "sectionTitle": "ASEGURADORAS",
     "title": "Aseguradoras de Excelencia",
@@ -125,5 +132,10 @@
       "contato": "Contacto"
     },
     "copyright": "© 2025 Forters. Todos los derechos reservados."
+  },
+  "cookies": {
+    "message": "Este sitio utiliza cookies para mejorar su experiencia de navegación. Al continuar navegando, acepta nuestra política de cookies.",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
   }
 }
