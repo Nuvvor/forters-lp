@@ -161,7 +161,7 @@ export function ProductsCarousel() {
 
           {/* Right side - Product details */}
           <div className={`space-y-8 lg:pl-8 transition-all duration-1000 delay-400 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}`}>
-            <div className="min-h-[280px] md:min-h-[240px] flex flex-col">
+            <div className="min-h-[360px] md:min-h-[320px] flex flex-col">
               <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">{t(`products.items.${currentProduct.id}.description`)}</h2>
               <p className="text-xl text-muted-foreground leading-relaxed">
                 {t(`products.items.${currentProduct.id}.details`)}

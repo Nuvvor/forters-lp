@@ -207,6 +207,17 @@
   will-change: transform;
 }
 
+/* Mobile: 2x faster scrolling */
+@media (max-width: 768px) {
+  .animate-scroll-left {
+    animation: scroll-left 22.5s linear infinite;
+  }
+
+  .animate-scroll-right {
+    animation: scroll-right 22.5s linear infinite;
+  }
+}
+
 /* Fade in up animation */
 @keyframes fade-in-up {
   0% {
