@@ -315,4 +315,57 @@
   animation-delay: 2s;
 }
 
+/* 3D Flag Carousel */
+@keyframes carousel-spin-desktop {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(400px);
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 0.6;
+  }
+  25%, 75% {
+    opacity: 0.15;
+  }
+  37.5%, 62.5% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.08;
+  }
+  87.5% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg) translateZ(400px);
+    opacity: 1;
+  }
+}
+
+@keyframes carousel-spin-mobile {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg) translateZ(280px);
+    opacity: 1;
+  }
+  12.5% {
+    opacity: 0.6;
+  }
+  25%, 75% {
+    opacity: 0.15;
+  }
+  37.5%, 62.5% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.08;
+  }
+  87.5% {
+    opacity: 0.6;
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg) translateZ(280px);
+    opacity: 1;
+  }
+}
+
 

@@ -24,6 +24,9 @@ export default function Home() {
   const [isServicosVisible, setIsServicosVisible] = useState(false);
   const presencaRef = useRef<HTMLDivElement>(null);
   const [isPresencaVisible, setIsPresencaVisible] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [carouselRotateX, setCarouselRotateX] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -86,6 +89,41 @@ export default function Home() {
         observer.unobserve(presencaRef.current);
       }
     };
+  }, []);
+
+  useEffect(() => {
+    // Detect mobile on client side only
+    setIsMobile(window.innerWidth < 768);
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!carouselRef.current) return;
+
+      const rect = carouselRef.current.getBoundingClientRect();
+      const viewportHeight = window.innerHeight;
+
+      // Calculate scroll progress from 0 (entering viewport) to 1 (exiting viewport)
+      const scrollProgress = Math.max(0, Math.min(1,
+        (viewportHeight - rect.top) / (viewportHeight + rect.height)
+      ));
+
+      // Smoothly rotate from -10deg to 10deg as user scrolls down
+      setCarouselRotateX(-10 + scrollProgress * 20);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
@@ -291,98 +329,111 @@ export default function Home() {
             </p>
           </div>
 
+          {/* 3D Flag Carousel - Desktop only, Grid on Mobile */}
           <div className="max-w-6xl mx-auto">
-            {/* Main 5 flags */}
-            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 mb-12 transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
-                  <Image
-                    src="https://flagcdn.com/w320/br.png"
-                    alt="Brazil Flag"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+            {/* Mobile: Grid view - Hidden, using 3D carousel instead */}
+            <div className="hidden">
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w320/br.png" alt="Brazil" fill className="object-cover" unoptimized />
                 </div>
-                <div className="text-lg">{t('presencaGlobal.countries.brasil')}</div>
+                <div className="text-xs">{t('presencaGlobal.countries.brasil')}</div>
               </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
-                  <Image
-                    src="https://flagcdn.com/w320/mx.png"
-                    alt="Mexico Flag"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w320/mx.png" alt="Mexico" fill className="object-cover" unoptimized />
                 </div>
-                <div className="text-lg">{t('presencaGlobal.countries.mexico')}</div>
+                <div className="text-xs">{t('presencaGlobal.countries.mexico')}</div>
               </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
-                  <Image
-                    src="https://flagcdn.com/w320/co.png"
-                    alt="Colombia Flag"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w320/co.png" alt="Colombia" fill className="object-cover" unoptimized />
                 </div>
-                <div className="text-lg">{t('presencaGlobal.countries.colombia')}</div>
+                <div className="text-xs">{t('presencaGlobal.countries.colombia')}</div>
               </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
-                  <Image
-                    src="https://flagcdn.com/w320/us.png"
-                    alt="United States Flag"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w320/us.png" alt="USA" fill className="object-cover" unoptimized />
                 </div>
-                <div className="text-lg">{t('presencaGlobal.countries.usa')}</div>
+                <div className="text-xs">{t('presencaGlobal.countries.usa')}</div>
               </div>
-
-              <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
-                  <Image
-                    src="https://flagcdn.com/w320/ar.png"
-                    alt="Argentina Flag"
-                    fill
-                    className="object-cover"
-                    unoptimized
-                  />
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w320/ar.png" alt="Argentina" fill className="object-cover" unoptimized />
                 </div>
-                <div className="text-lg">{t('presencaGlobal.countries.argentina')}</div>
+                <div className="text-xs">{t('presencaGlobal.countries.argentina')}</div>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w160/ky.png" alt="Cayman Islands" fill className="object-cover" unoptimized />
+                </div>
+                <div className="text-xs">Cayman Is.</div>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w160/cl.png" alt="Chile" fill className="object-cover" unoptimized />
+                </div>
+                <div className="text-xs">Chile</div>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w160/gt.png" alt="Guatemala" fill className="object-cover" unoptimized />
+                </div>
+                <div className="text-xs">Guatemala</div>
+              </div>
+              <div className="flex flex-col items-center gap-2">
+                <div className="w-full aspect-[3/2] overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image src="https://flagcdn.com/w160/uy.png" alt="Uruguay" fill className="object-cover" unoptimized />
+                </div>
+                <div className="text-xs">Uruguay</div>
               </div>
             </div>
 
-            {/* "E outros" section with centered 2x2 grid */}
-            <div className={`flex flex-col items-center gap-4 transition-all duration-1000 delay-600 ${isPresencaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <p className="text-lg text-muted-foreground italic">
-                {t('presencaGlobal.countries.outros')}
-              </p>
-              <div className="w-64 h-40 rounded-lg shadow-lg border border-gray-200 overflow-hidden bg-white">
-                <div className="grid grid-cols-2 grid-rows-2 gap-0 h-full">
-                  {/* Top left - Cayman Islands */}
-                  <div className="relative border-r border-b border-gray-200">
-                    <Image src="https://flagcdn.com/w160/ky.png" alt="Cayman Islands" fill className="object-cover" unoptimized />
-                  </div>
-                  {/* Top right - Chile */}
-                  <div className="relative border-b border-gray-200">
-                    <Image src="https://flagcdn.com/w160/cl.png" alt="Chile" fill className="object-cover" unoptimized />
-                  </div>
-                  {/* Bottom left - Guatemala */}
-                  <div className="relative border-r border-gray-200">
-                    <Image src="https://flagcdn.com/w160/gt.png" alt="Guatemala" fill className="object-cover" unoptimized />
-                  </div>
-                  {/* Bottom right - Uruguay */}
-                  <div className="relative">
-                    <Image src="https://flagcdn.com/w160/uy.png" alt="Uruguay" fill className="object-cover" unoptimized />
-                  </div>
+            {/* 3D Carousel */}
+            <div className={`transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100' : 'opacity-0'}`}>
+              <div ref={carouselRef} className="relative w-full h-[300px] flex items-center justify-center overflow-hidden" style={{ perspective: '2000px' }}>
+                <div
+                  className="relative w-[300px] h-[250px]"
+                  style={{
+                    transformStyle: 'preserve-3d',
+                    transform: `rotateX(${carouselRotateX}deg)`
+                  }}
+                >
+                  {[
+                    { src: 'https://flagcdn.com/w320/br.png', alt: 'Brazil' },
+                    { src: 'https://flagcdn.com/w320/mx.png', alt: 'Mexico' },
+                    { src: 'https://flagcdn.com/w320/co.png', alt: 'Colombia' },
+                    { src: 'https://flagcdn.com/w320/us.png', alt: 'United States' },
+                    { src: 'https://flagcdn.com/w320/ar.png', alt: 'Argentina' },
+                    { src: 'https://flagcdn.com/w320/ky.png', alt: 'Cayman Islands' },
+                    { src: 'https://flagcdn.com/w320/cl.png', alt: 'Chile' },
+                    { src: 'https://flagcdn.com/w320/gt.png', alt: 'Guatemala' },
+                    { src: 'https://flagcdn.com/w320/uy.png', alt: 'Uruguay' }
+                  ].map((flag, index) => {
+                    const angle = (360 / 9) * index;
+                    const rotateY = angle;
+                    const translateZ = isMobile ? 280 : 400;
+
+                    return (
+                      <div
+                        key={index}
+                        className="absolute top-1/2 left-1/2 w-48 h-32"
+                        style={{
+                          transformStyle: 'preserve-3d',
+                          transform: `translate(-50%, -50%) rotateY(${rotateY}deg) translateZ(${translateZ}px)`,
+                          animationName: `carousel-spin-${isMobile ? 'mobile' : 'desktop'}`,
+                          animationDuration: '30s',
+                          animationTimingFunction: 'linear',
+                          animationIterationCount: 'infinite',
+                          animationDelay: `${-index * (30 / 9)}s`
+                        }}
+                      >
+                        <div className="overflow-hidden rounded-lg shadow-2xl border-2 border-gray-300 w-full h-full relative bg-white">
+                          <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
