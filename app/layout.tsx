@@ -61,7 +61,7 @@ const jsonLd = {
   description: 'Soluções especializadas em linhas financeiras com presencia internacional. Corretora oficialmente licenciada pela SUSEP.',
   contactPoint: {
     '@type': 'ContactPoint',
-    telephone: '+55-11-94051-6104',
+    telephone: '+55 11 91235-1414',
     contactType: 'Customer Service',
     email: 'contato@forters.com.br',
     availableLanguage: ['Portuguese', 'English', 'Spanish']

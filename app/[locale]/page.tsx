@@ -12,11 +12,6 @@ import { PartnersSection } from "@/components/PartnersSection";
 import { ClientsSection } from "@/components/ClientsSection";
 import { HubSpotContactSection } from "@/components/HubSpotContactSection";
 import { CookieConsent } from "@/components/CookieConsent";
-import BR from 'country-flag-icons/react/3x2/BR';
-import MX from 'country-flag-icons/react/3x2/MX';
-import CO from 'country-flag-icons/react/3x2/CO';
-import US from 'country-flag-icons/react/3x2/US';
-import AR from 'country-flag-icons/react/3x2/AR';
 import { useTranslations } from "@/lib/i18n";
 import { LanguageSelector } from "@/components/LanguageSelector";
 
@@ -296,46 +291,99 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className={`flex flex-wrap justify-center gap-12 transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+          <div className="max-w-6xl mx-auto">
+            {/* Main 5 flags */}
+            <div className={`grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12 mb-12 transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
               <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden shadow-lg border border-gray-200">
-                  <BR className="w-full h-full scale-110 object-cover" />
+                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image
+                    src="https://flagcdn.com/w320/br.png"
+                    alt="Brazil Flag"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
                 <div className="text-lg">{t('presencaGlobal.countries.brasil')}</div>
               </div>
 
               <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden shadow-lg border border-gray-200">
-                  <MX className="w-full h-full scale-110 object-cover" />
+                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image
+                    src="https://flagcdn.com/w320/mx.png"
+                    alt="Mexico Flag"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
                 <div className="text-lg">{t('presencaGlobal.countries.mexico')}</div>
               </div>
 
               <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden shadow-lg border border-gray-200">
-                  <CO className="w-full h-full scale-110 object-cover" />
+                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image
+                    src="https://flagcdn.com/w320/co.png"
+                    alt="Colombia Flag"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
                 <div className="text-lg">{t('presencaGlobal.countries.colombia')}</div>
               </div>
 
               <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden shadow-lg border border-gray-200">
-                  <US className="w-full h-full scale-110 object-cover" />
+                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image
+                    src="https://flagcdn.com/w320/us.png"
+                    alt="United States Flag"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
                 <div className="text-lg">{t('presencaGlobal.countries.usa')}</div>
               </div>
 
               <div className="flex flex-col items-center gap-3">
-                <div className="w-48 h-32 overflow-hidden shadow-lg border border-gray-200">
-                  <AR className="w-full h-full scale-110 object-cover" />
+                <div className="w-48 h-32 overflow-hidden rounded-lg shadow-lg border border-gray-200 relative">
+                  <Image
+                    src="https://flagcdn.com/w320/ar.png"
+                    alt="Argentina Flag"
+                    fill
+                    className="object-cover"
+                    unoptimized
+                  />
                 </div>
                 <div className="text-lg">{t('presencaGlobal.countries.argentina')}</div>
               </div>
+            </div>
 
-              <div className="flex flex-col items-center gap-3">
-                <Globe className="w-48 h-32 text-primary" />
-                <div className="text-lg">{t('presencaGlobal.countries.outros')}</div>
+            {/* "E outros" section with centered 2x2 grid */}
+            <div className={`flex flex-col items-center gap-4 transition-all duration-1000 delay-600 ${isPresencaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <p className="text-lg text-muted-foreground italic">
+                {t('presencaGlobal.countries.outros')}
+              </p>
+              <div className="w-64 h-40 rounded-lg shadow-lg border border-gray-200 overflow-hidden bg-white">
+                <div className="grid grid-cols-2 grid-rows-2 gap-0 h-full">
+                  {/* Top left - Cayman Islands */}
+                  <div className="relative border-r border-b border-gray-200">
+                    <Image src="https://flagcdn.com/w160/ky.png" alt="Cayman Islands" fill className="object-cover" unoptimized />
+                  </div>
+                  {/* Top right - Chile */}
+                  <div className="relative border-b border-gray-200">
+                    <Image src="https://flagcdn.com/w160/cl.png" alt="Chile" fill className="object-cover" unoptimized />
+                  </div>
+                  {/* Bottom left - Guatemala */}
+                  <div className="relative border-r border-gray-200">
+                    <Image src="https://flagcdn.com/w160/gt.png" alt="Guatemala" fill className="object-cover" unoptimized />
+                  </div>
+                  {/* Bottom right - Uruguay */}
+                  <div className="relative">
+                    <Image src="https://flagcdn.com/w160/uy.png" alt="Uruguay" fill className="object-cover" unoptimized />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
