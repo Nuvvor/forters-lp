@@ -25,29 +25,64 @@ export function HubSpotContactSection({
   isDialogOpen: externalIsDialogOpen,
   setIsDialogOpen: externalSetIsDialogOpen
 }: HubSpotContactSectionProps = {}) {
-  const { t } = useTranslations();
+  const { t, locale } = useTranslations();
   const [internalIsDialogOpen, setInternalIsDialogOpen] = useState(false);
   const [isScriptLoaded, setIsScriptLoaded] = useState(false);
   const [isFormLoading, setIsFormLoading] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [formKey, setFormKey] = useState(0);
 
   // Use external state if provided, otherwise use internal state
   const isDialogOpen = externalIsDialogOpen !== undefined ? externalIsDialogOpen : internalIsDialogOpen;
   const setIsDialogOpen = externalSetIsDialogOpen || setInternalIsDialogOpen;
 
+  // Reset script loaded state when locale changes
+  useEffect(() => {
+    console.log("🌍 Locale changed to:", locale);
+    // Check if HubSpot script is actually loaded
+    // @ts-expect-error - HubSpot global
+    const scriptLoaded = typeof window !== 'undefined' && typeof window.hbspt !== 'undefined';
+    console.log("🌍 HubSpot script available:", scriptLoaded);
+    setIsScriptLoaded(scriptLoaded);
+  }, [locale]);
+
+  // Increment form key when dialog opens to force re-render
+  useEffect(() => {
+    console.log("🔵 Dialog state changed. isDialogOpen:", isDialogOpen);
+    if (isDialogOpen) {
+      console.log("🔵 Incrementing formKey");
+      setFormKey(prev => {
+        const newKey = prev + 1;
+        console.log("🔵 formKey changed from", prev, "to", newKey);
+        return newKey;
+      });
+    }
+  }, [isDialogOpen]);
+
   // Create form when dialog opens
   useEffect(() => {
+    console.log("🟢 Form creation effect triggered. isDialogOpen:", isDialogOpen, "isScriptLoaded:", isScriptLoaded, "formKey:", formKey);
+
     if (isDialogOpen && isScriptLoaded) {
-      console.log("Dialog opened, starting form creation...");
+      console.log("🟢 Dialog opened, starting form creation...");
       setIsFormLoading(true);
 
       // Wait for dialog to render, then set up observer and create form
       const setupForm = () => {
+        console.log("🟡 setupForm called");
         const container = document.getElementById('hubspot-form-container');
-        console.log("Container found:", container);
+        console.log("🟡 Container found:", container);
+
+        // Clear any existing form content to allow re-creation
+        if (container) {
+          console.log("🟡 Clearing container, current innerHTML length:", container.innerHTML.length);
+          container.innerHTML = '';
+          console.log("🟡 Container cleared");
+        }
 
         if (container) {
+          console.log("🟡 Setting up MutationObserver");
           const observer = new MutationObserver((mutations) => {
             console.log("🔍 MutationObserver triggered, mutations:", mutations.length);
             mutations.forEach((mutation) => {
@@ -92,7 +127,7 @@ export function HubSpotContactSection({
           // @ts-expect-error - HubSpot global
           if (window.hbspt) {
             try {
-              console.log("Creating HubSpot form...");
+              console.log("🟠 HubSpot SDK available, creating form...");
               // @ts-expect-error - HubSpot SDK
               window.hbspt.forms.create({
                 region: "na1",
@@ -104,13 +139,13 @@ export function HubSpotContactSection({
                   setIsFormLoading(false);
                 },
                 onFormSubmit: ($form: unknown) => {
-                  console.log("Form submitted", $form);
+                  console.log("📤 Form submitted", $form);
                 },
                 onFormSubmitted: ($form: unknown) => {
-                  console.log("Form submission complete", $form);
+                  console.log("✅ Form submission complete", $form);
                 }
               });
-              console.log("HubSpot form.create() called successfully");
+              console.log("🟠 HubSpot form.create() called successfully");
               // Fallback timeout in case observer doesn't fire
               setTimeout(() => {
                 console.log("⏰ Fallback timeout reached (2s), hiding skeleton");
@@ -143,7 +178,7 @@ export function HubSpotContactSection({
         clearTimeout(timer);
       };
     }
-  }, [isDialogOpen, isScriptLoaded]);
+  }, [isDialogOpen, isScriptLoaded, formKey]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -169,11 +204,13 @@ export function HubSpotContactSection({
   return (
     <>
       <Script
+        id="hubspot-forms-script"
         src="https://js.hsforms.net/forms/embed/v2.js"
         strategy="afterInteractive"
         onLoad={() => {
           console.log("✅ HubSpot script loaded successfully");
           console.log("Environment:", process.env.NODE_ENV);
+          console.log("hbspt available:", typeof window !== 'undefined' && 'hbspt' in window);
           setIsScriptLoaded(true);
         }}
         onError={(e) => {
@@ -239,6 +276,7 @@ export function HubSpotContactSection({
                       </div>
                     )}
                     <div
+                      key={formKey}
                       id="hubspot-form-container"
                       className={isFormLoading ? "hidden" : ""}
                     />
