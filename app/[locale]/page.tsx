@@ -389,8 +389,87 @@ export default function Home() {
               </div>
             </div>
 
-            {/* 3D Carousel */}
-            <div className={`transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100' : 'opacity-0'}`}>
+            {/* Mobile: Infinite Scroll Carousel */}
+            <div className={`md:hidden space-y-6 transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100' : 'opacity-0'}`}>
+              {/* Top row - scroll left */}
+              <div className="relative overflow-hidden">
+                <div className="flex gap-4 animate-scroll-left">
+                  {/* First set */}
+                  {[
+                    { src: 'https://flagcdn.com/w320/br.png', alt: 'Brazil' },
+                    { src: 'https://flagcdn.com/w320/mx.png', alt: 'Mexico' },
+                    { src: 'https://flagcdn.com/w320/co.png', alt: 'Colombia' },
+                    { src: 'https://flagcdn.com/w320/us.png', alt: 'United States' },
+                    { src: 'https://flagcdn.com/w320/ar.png', alt: 'Argentina' },
+                    { src: 'https://flagcdn.com/w320/ky.png', alt: 'Cayman Islands' },
+                    { src: 'https://flagcdn.com/w320/cl.png', alt: 'Chile' },
+                    { src: 'https://flagcdn.com/w320/gt.png', alt: 'Guatemala' },
+                    { src: 'https://flagcdn.com/w320/uy.png', alt: 'Uruguay' }
+                  ].map((flag, index) => (
+                    <div key={index} className="flex-shrink-0 w-36 h-24 relative rounded-lg overflow-hidden border-2 border-gray-300">
+                      <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
+                    </div>
+                  ))}
+                  {/* Duplicate set for seamless loop */}
+                  {[
+                    { src: 'https://flagcdn.com/w320/br.png', alt: 'Brazil' },
+                    { src: 'https://flagcdn.com/w320/mx.png', alt: 'Mexico' },
+                    { src: 'https://flagcdn.com/w320/co.png', alt: 'Colombia' },
+                    { src: 'https://flagcdn.com/w320/us.png', alt: 'United States' },
+                    { src: 'https://flagcdn.com/w320/ar.png', alt: 'Argentina' },
+                    { src: 'https://flagcdn.com/w320/ky.png', alt: 'Cayman Islands' },
+                    { src: 'https://flagcdn.com/w320/cl.png', alt: 'Chile' },
+                    { src: 'https://flagcdn.com/w320/gt.png', alt: 'Guatemala' },
+                    { src: 'https://flagcdn.com/w320/uy.png', alt: 'Uruguay' }
+                  ].map((flag, index) => (
+                    <div key={`dup-${index}`} className="flex-shrink-0 w-36 h-24 relative rounded-lg overflow-hidden border-2 border-gray-300">
+                      <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom row - scroll right */}
+              <div className="relative overflow-hidden">
+                <div className="flex gap-4 animate-scroll-right">
+                  {/* First set - different order */}
+                  {[
+                    { src: 'https://flagcdn.com/w320/uy.png', alt: 'Uruguay' },
+                    { src: 'https://flagcdn.com/w320/gt.png', alt: 'Guatemala' },
+                    { src: 'https://flagcdn.com/w320/cl.png', alt: 'Chile' },
+                    { src: 'https://flagcdn.com/w320/ky.png', alt: 'Cayman Islands' },
+                    { src: 'https://flagcdn.com/w320/ar.png', alt: 'Argentina' },
+                    { src: 'https://flagcdn.com/w320/us.png', alt: 'United States' },
+                    { src: 'https://flagcdn.com/w320/co.png', alt: 'Colombia' },
+                    { src: 'https://flagcdn.com/w320/mx.png', alt: 'Mexico' },
+                    { src: 'https://flagcdn.com/w320/br.png', alt: 'Brazil' }
+                  ].map((flag, index) => (
+                    <div key={index} className="flex-shrink-0 w-36 h-24 relative rounded-lg overflow-hidden border-2 border-gray-300">
+                      <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
+                    </div>
+                  ))}
+                  {/* Duplicate set */}
+                  {[
+                    { src: 'https://flagcdn.com/w320/uy.png', alt: 'Uruguay' },
+                    { src: 'https://flagcdn.com/w320/gt.png', alt: 'Guatemala' },
+                    { src: 'https://flagcdn.com/w320/cl.png', alt: 'Chile' },
+                    { src: 'https://flagcdn.com/w320/ky.png', alt: 'Cayman Islands' },
+                    { src: 'https://flagcdn.com/w320/ar.png', alt: 'Argentina' },
+                    { src: 'https://flagcdn.com/w320/us.png', alt: 'United States' },
+                    { src: 'https://flagcdn.com/w320/co.png', alt: 'Colombia' },
+                    { src: 'https://flagcdn.com/w320/mx.png', alt: 'Mexico' },
+                    { src: 'https://flagcdn.com/w320/br.png', alt: 'Brazil' }
+                  ].map((flag, index) => (
+                    <div key={`dup-${index}`} className="flex-shrink-0 w-36 h-24 relative rounded-lg overflow-hidden border-2 border-gray-300">
+                      <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* 3D Carousel - Desktop only */}
+            <div className={`hidden md:block transition-all duration-1000 delay-400 ${isPresencaVisible ? 'opacity-100' : 'opacity-0'}`}>
               <div ref={carouselRef} className="relative w-full h-[300px] flex items-center justify-center overflow-hidden" style={{ perspective: '2000px' }}>
                 <div
                   className="relative w-[300px] h-[250px]"
@@ -428,7 +507,7 @@ export default function Home() {
                           animationDelay: `${-index * (30 / 9)}s`
                         }}
                       >
-                        <div className="overflow-hidden rounded-lg shadow-2xl border-2 border-gray-300 w-full h-full relative bg-white">
+                        <div className="overflow-hidden rounded-lg border-2 border-gray-300 w-full h-full relative bg-white">
                           <Image src={flag.src} alt={flag.alt} fill className="object-cover" unoptimized />
                         </div>
                       </div>
