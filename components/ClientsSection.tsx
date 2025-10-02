@@ -19,9 +19,9 @@ const clients = [
   { name: "Ubits", logo: "/clients/ubit_s.png" },
   { name: "Osigu", logo: "/clients/osigu.png" },
   { name: "Reverde", logo: "/clients/reverde.svg" },
-  { name: "RappiPay", logo: "/clients/rappipay.jpg" },
   { name: "Vammo", logo: "/clients/vammo.png" },
   { name: "Silverguard", logo: "/clients/silverguard.png" },
+  { name: "Payhop", logo: "/clients/payhop.svg" },
 ];
 
 export function ClientsSection() {
@@ -98,6 +98,7 @@ export function ClientsSection() {
                     height={60}
                     className={`h-12 w-auto object-contain ${client.name === 'Maismu' || client.name === 'Livup' ? 'scale-[1.3]' : ''} ${client.name === 'Osigu' ? 'scale-[1.4]' : ''} ${client.name === 'RappiPay' ? 'scale-[1.2]' : ''} ${client.name === 'Vammo' ? 'scale-[1.5]' : ''}`}
                     unoptimized
+                    loading="lazy"
                   />
                 </div>
               ))}

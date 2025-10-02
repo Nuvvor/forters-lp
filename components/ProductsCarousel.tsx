@@ -19,7 +19,7 @@ const products = [
     subtitle: "Directors & Officers",
     description: "Seguro de Responsabilidade Civil para Diretores e Administradores",
     details: "Proteção para executivos contra reclamações relacionadas às suas decisões gerenciais e administrativas.",
-    image: "/products/do.jpg",
+    image: "/products/do.webp",
   },
   {
     id: "eo",
@@ -27,7 +27,7 @@ const products = [
     subtitle: "Errors & Omissions",
     description: "Seguro de Responsabilidade Civil Profissional",
     details: "Cobertura para profissionais contra reclamações de erros, omissões ou negligência no exercício de suas atividades.",
-    image: "/products/eo.jpg",
+    image: "/products/eo.webp",
   },
   {
     id: "rcg",
@@ -35,7 +35,7 @@ const products = [
     subtitle: "Responsabilidade Civil Geral",
     description: "Seguro de Responsabilidade Civil Geral",
     details: "Proteção contra danos corporais, materiais e morais causados a terceiros durante as operações da empresa.",
-    image: "/products/rcg.jpg",
+    image: "/products/rcg.webp",
   },
   {
     id: "cyber",
@@ -43,7 +43,7 @@ const products = [
     subtitle: "Seguro Cyber",
     description: "Proteção contra Riscos Cibernéticos",
     details: "Cobertura para ataques cibernéticos, vazamento de dados, ransomware e outras ameaças digitais.",
-    image: "/products/cyber.jpg",
+    image: "/products/cyber.webp",
   },
   {
     id: "garantia",
@@ -51,7 +51,7 @@ const products = [
     subtitle: "Surety Bond",
     description: "Seguro Garantia para Contratos",
     details: "Garantia para licitações, contratos e obrigações contratuais junto a órgãos públicos e privados.",
-    image: "/products/garantia.jpg",
+    image: "/products/garantia.webp",
   },
   {
     id: "outros",
@@ -59,7 +59,7 @@ const products = [
     subtitle: "Other Insurance",
     description: "Soluções Personalizadas",
     details: "Oferecemos outras soluções de seguros corporativos adaptadas às necessidades específicas do seu negócio.",
-    image: "/products/outros.jpg",
+    image: "/products/outros.webp",
   },
 ];
 
@@ -148,7 +148,7 @@ export function ProductsCarousel() {
 
                         {/* Blue tab with text */}
                         <div className="absolute bottom-0 left-0 bg-primary rounded-tr-xl px-6 py-4">
-                          <h3 className="text-3xl font-bold text-white mb-1">{t(`products.items.${product.id}.title`)}</h3>
+                          <div className="text-3xl font-bold text-white mb-1">{t(`products.items.${product.id}.title`)}</div>
                           <p className="text-sm text-white/90">{t(`products.items.${product.id}.subtitle`)}</p>
                         </div>
                       </CardContent>

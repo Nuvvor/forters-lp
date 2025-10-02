@@ -6,14 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { ProductsCarousel } from "@/components/ProductsCarousel";
+import dynamic from "next/dynamic";
 import { SectionTitle } from "@/components/SectionTitle";
-import { PartnersSection } from "@/components/PartnersSection";
-import { ClientsSection } from "@/components/ClientsSection";
-import { HubSpotContactSection } from "@/components/HubSpotContactSection";
 import { CookieConsent } from "@/components/CookieConsent";
 import { useTranslations } from "@/lib/i18n";
 import { LanguageSelector } from "@/components/LanguageSelector";
+
+// Lazy load below-fold components
+const ProductsCarousel = dynamic(() => import("@/components/ProductsCarousel").then(mod => mod.ProductsCarousel), { ssr: false });
+const PartnersSection = dynamic(() => import("@/components/PartnersSection").then(mod => mod.PartnersSection), { ssr: false });
+const ClientsSection = dynamic(() => import("@/components/ClientsSection").then(mod => mod.ClientsSection), { ssr: false });
+const HubSpotContactSection = dynamic(() => import("@/components/HubSpotContactSection").then(mod => mod.HubSpotContactSection), { ssr: false });
 
 export default function Home() {
   const { t } = useTranslations();
@@ -134,7 +137,7 @@ export default function Home() {
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 bg-[#25D366] hover:bg-[#20BD5A] text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 animate-bounce-slow"
-        aria-label="Contact us on WhatsApp"
+        aria-label="Contatar via WhatsApp"
       >
         <MessageCircle className="w-6 h-6" />
       </a>
@@ -143,7 +146,7 @@ export default function Home() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <Image src="/logo_forters.svg" alt="Forters Logo" width={40} height={40} className="h-10 w-auto" />
+              <Image src="/logo_forters.svg" alt="Forters Logo" width={40} height={40} className="h-10 w-auto" priority />
               <span className="text-2xl font-bold text-foreground">Forters</span>
             </div>
             <div className="hidden md:flex items-center gap-8">
@@ -164,7 +167,7 @@ export default function Home() {
                 {t('nav.faleConosco')}
               </Button>
               <LanguageSelector />
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden" aria-label="Abrir menu">
                 <Menu className="h-5 w-5" />
               </Button>
             </div>
@@ -556,7 +559,7 @@ export default function Home() {
             </div>
 
             {/* Copyright */}
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-700">
               {t('footer.copyright')}
             </div>
           </div>
