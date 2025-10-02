@@ -21,7 +21,7 @@ const clients = [
   { name: "Reverde", logo: "/clients/reverde.svg" },
   { name: "Vammo", logo: "/clients/vammo.png" },
   { name: "Silverguard", logo: "/clients/silverguard.png" },
-  { name: "Payhop", logo: "/clients/payhop.svg" },
+  { name: "Payhop", logo: "/clients/payhop.jpg" },
 ];
 
 export function ClientsSection() {
